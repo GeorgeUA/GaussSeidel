@@ -24,4 +24,31 @@ short isExistsFile(char *path)
     return isExist;
 }
 
+void readOrderMatrixAndAccuracyFromFile(char *path, int *n, double *eps)
+{
+    FILE *fptr = fopen(path, "r");
+    fscanf(fptr, "%d", n);
+    fscanf(fptr, "%lf", eps);
+    fclose(fptr);
+}
+
+void readSleFromFile(char *path, int N, double **A, double *B)
+{
+    FILE *fptr = fopen(path, "r");
+    double tmp;
+    fscanf(fptr, "%lf", &tmp);
+    fscanf(fptr, "%lf", &tmp);
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            fscanf(fptr, "%lf", &A[i][j]);
+        }
+        fscanf(fptr, "%lf", &B[i]);
+    }
+
+    fclose(fptr);
+}
+
 #endif
